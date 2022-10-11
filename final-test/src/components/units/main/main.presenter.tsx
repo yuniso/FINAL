@@ -22,7 +22,7 @@ export default function MainUI(props: any) {
             />
             <S.ItemDetail>
               <S.TagsDetail>
-                <S.Tags>{e.tags[0] ? e.tags : "기본태그"}</S.Tags>
+                <S.Tags>{e.tags[0] ? e.tags[0] : "기본태그"}</S.Tags>
                 <S.Price>{e.price.toLocaleString()}</S.Price>
               </S.TagsDetail>
               <S.seller>{e.seller.name}</S.seller>
