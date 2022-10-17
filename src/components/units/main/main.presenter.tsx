@@ -1,13 +1,11 @@
 import * as S from "./main.style";
 
 export default function MainUI(props: any) {
-  const Items = props.data?.fetchUseditems.splice(8, 2);
-
   return (
     <S.Wrapper>
       <S.Title>New Arrival</S.Title>
       <S.ItemCardWrapper>
-        {props.data?.fetchUseditems.map((e: any) => (
+        {props.data?.fetchUseditems.slice(0, 8).map((e: any) => (
           <S.ItemCard
             key={e._id}
             id={e._id}
