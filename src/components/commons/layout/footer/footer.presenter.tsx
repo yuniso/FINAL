@@ -6,7 +6,7 @@ export default function FooterUI() {
       <S.Logo />
       <S.Body>
         <p>(주) 딩코</p>
-        commit Test commit Test2 commit Test
+        commit Test commit Test2 commit Test commit Test
       </S.Body>
     </S.Wrapper>
   );
