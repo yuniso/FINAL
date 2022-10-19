@@ -11,7 +11,7 @@ import { FETCH_USER_LOGGED_IN, LOGIN_USER } from "./login.queries";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { message } from "antd";
+import { message, Modal } from "antd";
 
 const schema = yup.object({
   email: yup
@@ -65,10 +65,10 @@ export default function LoginPage() {
       localStorage.setItem("userInfo", JSON.stringify(getUserInfo));
       setLoginStatus(true);
       router.push("/");
-      alert("로그인에 성공하였습니다.");
+      Modal.success({ content: "로그인에 성공하였습니다." });
       console.log(result);
     } catch (error) {
-      message.error("로그인에 실패하였습니다.");
+      Modal.error({ content: "로그인에 실패하였습니다." });
     }
   };
   return (

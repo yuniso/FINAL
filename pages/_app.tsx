@@ -2,6 +2,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import Layout from "../src/components/commons/layout";
+import "antd/dist/antd.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const client = new ApolloClient({

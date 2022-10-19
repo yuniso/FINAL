@@ -12,6 +12,7 @@ export const Logo = styled.div`
   background: url("/header/dingco-logo1.png");
   margin-top: 26px;
   margin-left: 76px;
+  cursor: pointer;
 `;
 
 export const ItemWrapper = styled.div`
@@ -20,6 +21,7 @@ export const ItemWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-left: 1300px;
+  cursor: pointer;
 `;
 
 export const Item1 = styled.div``;
@@ -29,3 +31,5 @@ export const Item2 = styled.div`
 export const Item3 = styled.div`
   margin-left: 56px;
 `;
+
+export const Point = styled.div``;

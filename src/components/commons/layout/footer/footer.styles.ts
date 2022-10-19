@@ -4,8 +4,7 @@ export const Wrapper = styled.div`
   width: 1920px;
   height: 317px;
   background-color: #f1f1f1;
-  padding-top: 53px;
-  /* padding-left: 107px; */
+  padding: 53px 0px 53px 107px;
 `;
 
 export const Logo = styled.div`
@@ -14,4 +13,8 @@ export const Logo = styled.div`
   background: url("/footer/dingco-logo3.png");
 `;
 
-export const Body = styled.div``;
+export const Body = styled.div`
+  margin-top: 15px;
+  margin-left: 17px;
+  font-size: 14px;
+`;

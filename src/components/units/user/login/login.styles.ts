@@ -11,7 +11,7 @@ export const Title = styled.div`
 `;
 
 export const Line = styled.div`
-  width: 1630px;
+  width: 1700px;
   border: 3px solid #555555;
   margin-top: 114px;
 `;

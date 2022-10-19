@@ -13,13 +13,13 @@ export const Title = styled.div`
 `;
 
 export const Line = styled.div`
-  width: 1945px;
+  width: 1700px;
   border: 3px solid #555555;
   background-color: #555555;
 `;
 
 export const UserWrapper = styled.div`
-  padding: 41px 901px 39px 53px;
+  padding: 41px 0px 39px 53px;
 `;
 
 export const Label = styled.div`
@@ -90,7 +90,7 @@ export const Name = styled.input`
   }
 `;
 export const ButtonWrapper = styled.div`
-  padding: 68px 756px 101px 771px;
+  padding: 68px 0px 101px 771px;
 `;
 
 export const CancelButton = styled.button`

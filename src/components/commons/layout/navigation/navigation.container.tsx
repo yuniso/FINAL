@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import NavigationUI from "./Navigation.presenter";
+import NavigationUI from "./navigation.presenter";
 
 export default function NavigationPage() {
   const router = useRouter();

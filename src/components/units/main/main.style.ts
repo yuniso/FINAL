@@ -12,8 +12,8 @@ export const Title = styled.div`
   font-weight: 700;
 `;
 export const ItemCardWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   margin-top: 98px;
 `;
 
