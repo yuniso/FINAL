@@ -2,37 +2,37 @@ import { useRouter } from "next/router";
 import * as S from "./navigation.styles";
 
 const menus = [
-  { name: "BRAND", page: "/" },
-  { name: "CATEGORY", page: "/" },
-  { name: "LIFE", page: "/" },
-  { name: "BEAUTY", page: "/" },
-  { name: "|", page: "/" },
-  { name: "#STYLE", page: "/" },
-  { name: "EVENT", page: "/" },
+  { name: "BRAND", page: "/market" },
+  { name: "CATEGORY", page: "/market" },
+  { name: "LIFE", page: "/market" },
+  { name: "BEAUTY", page: "/market" },
+  { name: "|", page: "/market" },
+  { name: "#STYLE", page: "/market" },
+  { name: "EVENT", page: "/market" },
 ];
 
 const loginMenus = [
   { logo: "DINGCO", page: "/" },
-  { name: "BRAND", page: "/" },
-  { name: "CATEGORY", page: "/" },
-  { name: "LIFE", page: "/" },
-  { name: "BEAUTY", page: "/" },
-  { name: "|", page: "/" },
-  { name: "#STYLE", page: "/" },
-  { name: "EVENT", page: "/" },
+  { name: "BRAND", page: "/market" },
+  { name: "CATEGORY", page: "/market" },
+  { name: "LIFE", page: "/market" },
+  { name: "BEAUTY", page: "/market" },
+  { name: "|", page: "/market" },
+  { name: "#STYLE", page: "/market" },
+  { name: "EVENT", page: "/market" },
   { name2: "회원가입", page: "/join" },
   { name2: "장바구니", page: "/" },
 ];
 
 const joinMenus = [
   { logo: "DINGCO", page: "/" },
-  { name: "BRAND", page: "/" },
-  { name: "CATEGORY", page: "/" },
-  { name: "LIFE", page: "/" },
-  { name: "BEAUTY", page: "/" },
-  { name: "|", page: "/" },
-  { name: "#STYLE", page: "/" },
-  { name: "EVENT", page: "/" },
+  { name: "BRAND", page: "/market" },
+  { name: "CATEGORY", page: "/market" },
+  { name: "LIFE", page: "/market" },
+  { name: "BEAUTY", page: "/market" },
+  { name: "|", page: "/market" },
+  { name: "#STYLE", page: "/market" },
+  { name: "EVENT", page: "/market" },
   { name2: "로그인", page: "/login" },
   { name2: "장바구니", page: "/" },
 ];
