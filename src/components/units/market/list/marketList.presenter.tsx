@@ -1,5 +1,6 @@
 import * as S from "./marketList.styles";
 import { BiSearch } from "react-icons/bi";
+import InfiniteScroll from "react-infinite-scroller";
 
 export default function MarketListUI(props: any) {
   return (
@@ -43,6 +44,43 @@ export default function MarketListUI(props: any) {
         />
       </S.ButtonWrapper>
       <S.Line />
+      <InfiniteScroll
+        pageStart={0}
+        loadMore={props.onFetchMore}
+        hasMore={true || false}
+      >
+        <S.UseditemsWrapper>
+          {props.usedItems ? (
+            props.usedItems?.fetchUseditems.map((e: any) => (
+              <S.UseditemCard
+                key={e._id}
+                id={e._id}
+                onClick={props.onClickMoveToDetail}
+              >
+                <S.UseditemImage
+                  src={
+                    e.images[0]
+                      ? `https://storage.googleapis.com/${e.images[0]}`
+                      : "/main/main.png"
+                  }
+                />
+                <S.UsedDetailWrapper>
+                  <S.UsedTagsWrapper>
+                    <S.UsedTags>{e.tags[0] ? e.tags : "기본태그"}</S.UsedTags>
+                    <S.UsedPrice>
+                      {e.price ? e.price.toLocaleString() : e.price}
+                    </S.UsedPrice>
+                  </S.UsedTagsWrapper>
+                  <S.UsedSeller>{e.seller.name}</S.UsedSeller>
+                  <S.UsedName>{e.name}</S.UsedName>
+                </S.UsedDetailWrapper>
+              </S.UseditemCard>
+            ))
+          ) : (
+            <></>
+          )}
+        </S.UseditemsWrapper>
+      </InfiniteScroll>
     </S.Wrapper>
   );
 }

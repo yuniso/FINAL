@@ -11,7 +11,29 @@ export default function MarketListPage() {
   const router = useRouter();
 
   const { data: bestItems } = useQuery(FETCH_USEDITEMS_OF_THE_BEST);
-  const { data: usedItems } = useQuery(FETCH_USEDITEMS);
+  const { data: usedItems, fetchMore } = useQuery(FETCH_USEDITEMS);
+
+  const onFetchMore = () => {
+    if (!usedItems) return;
+
+    fetchMore({
+      variables: { page: Math.ceil(usedItems?.fetchUseditems.length / 10) + 1 },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        // 현재 페이지가 없을 경우
+        if (!fetchMoreResult.fetchUseditems)
+          return {
+            fetchUseditems: [...prev.fetchUseditems],
+          };
+
+        return {
+          fetchUseditems: [
+            ...prev.fetchUseditems,
+            ...fetchMoreResult.fetchUseditems,
+          ],
+        };
+      },
+    });
+  };
 
   const onClickMoveToDetail = (event: MouseEvent<HTMLDivElement>) => {
     if (!(event.target instanceof HTMLDivElement)) return;
@@ -23,6 +45,7 @@ export default function MarketListPage() {
       bestItems={bestItems}
       usedItems={usedItems}
       onClickMoveToDetail={onClickMoveToDetail}
+      onFetchMore={onFetchMore}
     />
   );
 }
