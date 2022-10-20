@@ -32,6 +32,7 @@ export const ItemImage = styled.img`
 export const ItemCard = styled.div``;
 export const ItemDetail = styled.div`
   padding-left: 15px;
+  cursor: pointer;
 `;
 
 export const TagsDetail = styled.div`
@@ -117,6 +118,7 @@ export const UseditemImage = styled.img`
 export const UsedDetailWrapper = styled.div`
   padding-left: 15px;
   margin-top: 18px;
+  cursor: pointer;
 `;
 
 export const UsedTagsWrapper = styled.div`

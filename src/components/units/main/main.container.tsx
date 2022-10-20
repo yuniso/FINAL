@@ -19,7 +19,7 @@ export default function MainPage() {
 
   const onClickMoveToDetail = (event: MouseEvent<HTMLDivElement>) => {
     if (!(event.target instanceof HTMLDivElement)) return;
-    router.push(`/products/${event.target.id}`);
+    router.push(`/market/${event.target._id}`);
   };
 
   return <MainUI data={data} onClickMoveToDetail={onClickMoveToDetail} />;

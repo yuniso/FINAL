@@ -37,7 +37,8 @@ export default function MarketListPage() {
 
   const onClickMoveToDetail = (event: MouseEvent<HTMLDivElement>) => {
     if (!(event.target instanceof HTMLDivElement)) return;
-    router.push(`/products/${event.target.id}`);
+    router.push(`/market/${event.currentTarget.id}`);
+    // router.push(`/market/${event.target.id}`)
   };
 
   return (
