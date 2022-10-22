@@ -9,7 +9,7 @@ export default function HeaderPage() {
   const router = useRouter();
   const [loginStatus, setLoginStatus] = useRecoilState(loginStatusState);
 
-  const { data: userInfo } = useQuery(FETCH_USER_LOGGED_IN);
+  const { data } = useQuery(FETCH_USER_LOGGED_IN);
 
   const onClickLogo = () => {
     router.push("/");
@@ -29,7 +29,7 @@ export default function HeaderPage() {
       onClickLogin={onClickLogin}
       onClickJoin={onClickJoin}
       loginStatus={loginStatus}
-      userInfo={userInfo}
+      data={data}
     />
   );
 }

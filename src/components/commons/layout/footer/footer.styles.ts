@@ -18,3 +18,8 @@ export const Body = styled.div`
   margin-left: 17px;
   font-size: 14px;
 `;
+
+export const Line = styled.div`
+  width: 1920px;
+  border: 1px solid #c4c4c4;
+`;

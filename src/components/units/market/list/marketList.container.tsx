@@ -41,12 +41,17 @@ export default function MarketListPage() {
     // router.push(`/market/${event.target.id}`)
   };
 
+  const onClickMoveToWrite = (event: any) => {
+    router.push("/market/write");
+  };
+
   return (
     <MarketListUI
       bestItems={bestItems}
       usedItems={usedItems}
       onClickMoveToDetail={onClickMoveToDetail}
       onFetchMore={onFetchMore}
+      onClickMoveToWrite={onClickMoveToWrite}
     />
   );
 }

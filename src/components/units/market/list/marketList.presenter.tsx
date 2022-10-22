@@ -36,7 +36,9 @@ export default function MarketListUI(props: any) {
         </S.ItemCardWrapper>
       </S.BestWrapper>
       <S.ButtonWrapper>
-        <S.CreateButton>상품등록</S.CreateButton>
+        <S.CreateButton onClick={props.onClickMoveToWrite}>
+          상품등록
+        </S.CreateButton>
         <S.search />
         <BiSearch
           size={40}

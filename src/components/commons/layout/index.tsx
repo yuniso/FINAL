@@ -7,7 +7,7 @@ import NavigationPage from "./navigation/navigation.container";
 
 const Body = styled.div``;
 const HIDDEN_HEADERS = ["/login", "/join"];
-const HIDDEN_BANNERS = ["/login", "/join"];
+const HIDDEN_BANNERS = ["/login", "/join", "/market/[_id]"];
 
 export default function Layout(props: any) {
   const router = useRouter();
