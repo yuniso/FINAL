@@ -13,7 +13,7 @@ export const FETCH_USER_LOGGED_IN = gql`
       name
       email
       picture
-      usePoint {
+      userPoint {
         amount
       }
     }
