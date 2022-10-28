@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { Modal } from "antd";
+import DaumPostcode from "react-daum-postcode";
 
 export const Wrapper = styled.div`
   width: 1920px;
@@ -63,22 +65,22 @@ export const Remarks = styled.input`
     padding-left: 19px;
   }
 `;
-export const Contents = styled.input`
-  width: 1419px;
-  height: 56px;
-  background-color: #e9e9e9;
-  border: none;
-  outline: none;
-  font-size: 24px;
-  margin-left: 171px;
-  padding-left: 19px;
+// export const Contents = styled.input`
+//   width: 1419px;
+//   height: 56px;
+//   background-color: #e9e9e9;
+//   border: none;
+//   outline: none;
+//   font-size: 24px;
+//   margin-left: 171px;
+//   padding-left: 19px;
 
-  ::placeholder {
-    font-size: 15px;
-    color: #a9a9a9;
-    padding-left: 19px;
-  }
-`;
+//   ::placeholder {
+//     font-size: 15px;
+//     color: #a9a9a9;
+//     padding-left: 19px;
+//   }
+// `;
 export const Price = styled.input`
   width: 1419px;
   height: 56px;
@@ -111,14 +113,57 @@ export const Tags = styled.input`
     padding-left: 19px;
   }
 `;
-export const AddressWrapper = styled.div``;
-export const PostalCodeWrapper = styled.div``;
-export const PostalCode = styled.input``;
-export const PostalCodeButton = styled.button``;
-export const AddressDetail = styled.div``;
-export const Address1 = styled.input``;
-export const Address2 = styled.input``;
-export const UploadWrapper = styled.div``;
+export const AddressWrapper = styled.div`
+  margin-top: 41px;
+`;
+export const PostalCodeWrapper = styled.div`
+  margin-top: 66px;
+  margin-left: 26px;
+`;
+export const PostalCode = styled.input`
+  width: 77px;
+  height: 52px;
+  text-align: center;
+  color: #bdbdbd;
+  outline: none;
+  border: 1px solid #bdbdbd;
+
+  ::placeholder {
+    color: #bdbdbd;
+  }
+`;
+
+export const PostalCodeButton = styled.button`
+  width: 124px;
+  height: 51px;
+  margin-left: 16px;
+  background-color: #555555;
+  color: #ffffff;
+  border: none;
+`;
+export const AddressDetail = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const Address1 = styled.input`
+  margin-top: 26px;
+  width: 1271px;
+  height: 56px;
+  background-color: #e9e9e9;
+  outline: none;
+  border: none;
+`;
+export const Address2 = styled.input`
+  margin-top: 24px;
+  width: 1271px;
+  height: 56px;
+  background-color: #e9e9e9;
+  outline: none;
+  border: none;
+`;
+export const UploadWrapper = styled.div`
+  margin-top: 42px;
+`;
 export const ButtonWrapper = styled.div`
   padding: 73px 746px 0px 677px;
 `;
@@ -140,4 +185,20 @@ export const WriteButton = styled.button`
   color: #ffffff;
   border: none;
   cursor: pointer;
+`;
+
+export const AddressModal = styled(Modal)``;
+export const AddressSearch = styled(DaumPostcode)``;
+export const Error = styled.div`
+  color: red;
+  margin-top: 10px;
+  margin-left: 303px;
+`;
+export const MapWrapper = styled.div`
+  display: flex;
+`;
+export const ImageWrapper = styled.div`
+  display: flex;
+  margin-top: 47px;
+  margin-left: 42px;
 `;

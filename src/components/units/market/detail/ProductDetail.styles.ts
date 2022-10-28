@@ -97,8 +97,14 @@ export const Line3 = styled.div`
 
 export const Contents = styled.div`
   width: 1695px;
-  height: 2625px;
+`;
+
+export const ContentsWrapper = styled.div`
+  width: 1695px;
+  height: 1400px;
   margin-top: 105px;
   margin-left: 112px;
   background-color: #ffffff;
+  padding: 97px 232px 86px 212px;
+  font-size: 24px;
 `;

@@ -1,13 +1,14 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { MouseEvent } from "react";
+import { withAuth } from "../../../commons/hooks/withAuth";
 import MarketListUI from "./marketList.presenter";
 import {
   FETCH_USEDITEMS,
   FETCH_USEDITEMS_OF_THE_BEST,
 } from "./marketList.queries";
 
-export default function MarketListPage() {
+function MarketListPage() {
   const router = useRouter();
 
   const { data: bestItems } = useQuery(FETCH_USEDITEMS_OF_THE_BEST);
@@ -55,3 +56,5 @@ export default function MarketListPage() {
     />
   );
 }
+
+export default withAuth(MarketListPage);

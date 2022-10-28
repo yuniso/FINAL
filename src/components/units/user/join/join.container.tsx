@@ -57,7 +57,6 @@ export default function JoinPage() {
         },
       });
       Modal.success({ content: "회원가입이 완료되었습니다." });
-      // 경로 로그인 창으로 변경해야 함
       router.push("/login");
       console.log(result);
     } catch (error) {

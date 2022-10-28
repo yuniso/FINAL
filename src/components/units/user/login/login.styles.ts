@@ -14,6 +14,7 @@ export const Line = styled.div`
   width: 1700px;
   border: 3px solid #555555;
   margin-top: 114px;
+  background-color: #555555;
 `;
 
 export const IdWrapper = styled.div`
