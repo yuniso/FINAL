@@ -17,7 +17,11 @@ export default function MarketWriteUI(props: any) {
       }
     >
       {props.isOpen && (
-        <S.AddressModal visible={true} closable={false}>
+        <S.AddressModal
+          visible={true}
+          closable={false}
+          onCancel={props.handleCancel}
+        >
           <S.AddressSearch
             onComplete={props.onCompleteAddressSearch}
           ></S.AddressSearch>
@@ -57,18 +61,20 @@ export default function MarketWriteUI(props: any) {
                   marginLeft: "171px",
                 }}
                 defaultValue={props.data?.fetchUseditem.contents}
-              ></ReactQuill>
+              />
             )
           ) : (
             <ReactQuill
               onChange={props.onChangeContents}
               placeholder="상품을 설명해주세요."
               style={{ width: "1419px", height: "431px", marginLeft: "171px" }}
-            ></ReactQuill>
+            />
           )}
         </S.InputWrapper>
-        <S.Error>{props.formState.errors.contents?.message}</S.Error>
-        <S.InputLine2 style={{ marginTop: "80px" }} />
+        <S.Error style={{ marginTop: "55px" }}>
+          {props.formState.errors.contents?.message}
+        </S.Error>
+        <S.InputLine2 style={{ marginTop: "25px" }} />
         <S.InputWrapper>
           <S.Label>판매 가격</S.Label>
           <S.Price
@@ -93,7 +99,10 @@ export default function MarketWriteUI(props: any) {
             <KaKaoMap address={props.address}></KaKaoMap>
             <S.PostalCodeWrapper>
               <S.PostalCode placeholder="07250" readOnly />
-              <S.PostalCodeButton onClick={props.onClickAddressSearch}>
+              <S.PostalCodeButton
+                type="button"
+                onClick={props.onClickAddressSearch}
+              >
                 우편번호 검색
               </S.PostalCodeButton>
               <S.AddressDetail>
@@ -112,6 +121,7 @@ export default function MarketWriteUI(props: any) {
         <S.UploadWrapper>
           <S.Label>사진 첨부</S.Label>
           <S.ImageWrapper>
+            <div ref={props.divRef}></div>
             {props.fileUrls.map((e: any, i: any) => (
               <Uploads01
                 key={uuidv4()}

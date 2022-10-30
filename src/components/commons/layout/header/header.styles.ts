@@ -57,7 +57,9 @@ export const Basket = styled.div`
   margin-left: 45px;
 `;
 
-export const ModalOpen = styled(Modal)``;
+export const ModalOpen = styled(Modal)`
+  margin-top: 500px;
+`;
 export const CancelButton = styled.button``;
 export const ReloadTitle = styled.div``;
 export const ReloadSelect = styled.select``;
@@ -70,3 +72,5 @@ export const Circle = styled.div`
   background-color: #f65656;
   margin-left: 5px;
 `;
+
+export const Button = styled.button``;

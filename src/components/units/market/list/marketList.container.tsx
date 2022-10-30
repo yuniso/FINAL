@@ -39,7 +39,6 @@ function MarketListPage() {
   const onClickMoveToDetail = (event: MouseEvent<HTMLDivElement>) => {
     if (!(event.target instanceof HTMLDivElement)) return;
     router.push(`/market/${event.currentTarget.id}`);
-    // router.push(`/market/${event.target.id}`)
   };
 
   const onClickMoveToWrite = (event: any) => {

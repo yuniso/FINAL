@@ -1,6 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
@@ -11,6 +10,8 @@ import {
   FETCH_USER_LOGGED_IN,
   LOGOUT_USER,
 } from "./header.queries";
+import Script from "next/script";
+import { useForm } from "react-hook-form";
 
 declare const window: typeof globalThis & {
   IMP: any;
@@ -24,11 +25,15 @@ export default function HeaderPage() {
   const [user, setUser] = useState(false);
   const [selected, setSelected] = useState("");
 
-  const { data } = useQuery(FETCH_USER_LOGGED_IN);
+  const { data: LoginUser } = useQuery(FETCH_USER_LOGGED_IN);
   const [logoutUser] = useMutation(LOGOUT_USER);
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
+
+  const { register, handleSubmit } = useForm({
+    mode: "onChange",
+  });
 
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
@@ -39,7 +44,7 @@ export default function HeaderPage() {
   }, [loginStatus]);
 
   useEffect(() => {
-    setUser(data);
+    setUser(LoginUser);
   }, [user]);
 
   const onClickLogout = () => {
@@ -57,16 +62,7 @@ export default function HeaderPage() {
     }
   };
 
-  const onChangeSelect = (event: any) => {
-    setSelected(event.target.value);
-    if (!event.target.value) {
-      setIsActive(false);
-    } else {
-      setIsActive(true);
-    }
-  };
-
-  const onClickReload = () => {
+  const onClickReload = (data: any) => {
     const IMP = window.IMP;
 
     IMP.init("imp16816174");
@@ -76,9 +72,9 @@ export default function HeaderPage() {
         pg: "nice",
         pay_method: "card",
         name: "포인트 충전",
-        amount: selected,
-        buyer_email: data?.fetchUserLoggedIn.email,
-        buyer_name: data?.fetchUserLoggedIn.name,
+        amount: data.price,
+        buyer_email: LoginUser?.fetchUserLoggedIn.email,
+        buyer_name: LoginUser?.fetchUserLoggedIn.name,
         buyer_tel: "010-0000-0000",
         buyer_addr: "서울특별시 구로구 디지털로 300, 패스트파이브 구로점",
         buyer_postcode: "08379",
@@ -100,13 +96,16 @@ export default function HeaderPage() {
     );
   };
 
-  const deleteCookie = (e: any) => {
-    document.cookie =
-      e + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;domain=C.kr;path=/;";
+  const deleteCookie = (name: any) => {
+    document.cookie = name + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;";
   };
 
   const onClickModal = () => {
     setIsOpen(true);
+  };
+
+  const onClickCancel = () => {
+    setIsOpen(false);
   };
 
   const onClickLogo = () => {
@@ -123,29 +122,29 @@ export default function HeaderPage() {
 
   return (
     <div>
-      <Head>
-        <script
-          type="text/javascript"
-          src="https://code.jquery.com/jquery-1.12.4.min.js"
-        />
-        <script
-          type="text/javascript"
-          src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
-        />
-      </Head>
+      <Script
+        type="text/javascript"
+        src="https://code.jquery.com/jquery-1.12.4.min.js"
+      />
+      <Script
+        type="text/javascript"
+        src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
+      />
       <HeaderUI
         onClickLogo={onClickLogo}
         onClickLogin={onClickLogin}
         onClickJoin={onClickJoin}
         loginStatus={loginStatus}
-        data={data}
-        onClickModal={onClickModal}
+        LoginUser={LoginUser}
         onClickLogout={onClickLogout}
         setIsOpen={setIsOpen}
         isActive={isActive}
         onClickReload={onClickReload}
-        onChangeSelect={onChangeSelect}
         isOpen={isOpen}
+        onClickModal={onClickModal}
+        onClickCancel={onClickCancel}
+        register={register}
+        handleSubmit={handleSubmit}
       />
     </div>
   );

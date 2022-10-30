@@ -1,3 +1,4 @@
+import { Modal } from "antd";
 import * as S from "./header.styles";
 
 export default function HeaderUI(props: any) {
@@ -9,11 +10,11 @@ export default function HeaderUI(props: any) {
           <S.LoginWrapper>
             <S.Point>
               <span style={{ fontWeight: "bold" }}>
-                {props.data?.fetchUserLoggedIn.name}
+                {props.LoginUser?.fetchUserLoggedIn.name}
               </span>
               님 포인트{" "}
               <span style={{ borderBottom: "1px solid" }}>
-                {props.data?.fetchUserLoggedIn.userPoint.amount.toLocaleString()}
+                {props.LoginUser?.fetchUserLoggedIn.userPoint.amount.toLocaleString()}
               </span>
               P
             </S.Point>
@@ -35,25 +36,23 @@ export default function HeaderUI(props: any) {
           </>
         )}
       </S.ItemWrapper>
-
       {props.isOpen && (
-        <S.ModalOpen open={props.onClickModal} visible={true}>
-          <S.CancelButton onClick={props.setIsOpen}></S.CancelButton>
+        <S.ModalOpen visible={true} onCancel={props.onClickCancel}>
           <S.ReloadTitle>충전하실 금액을 선택해주세요!</S.ReloadTitle>
-          <S.ReloadSelect
-            value={props.selected}
-            onChange={props.onChangeSelect}
-          >
-            <option value="">포인트 선택</option>
-            <option value="100">100</option>
-            <option value="500">500</option>
-            <option value="2000">2,000</option>
-            <option value="5000">5,000</option>
-          </S.ReloadSelect>
-          <S.ReloadButton
-            isActive={props.isActive}
-            onClick={props.onClickReload}
-          ></S.ReloadButton>
+          <form>
+            <S.ReloadSelect {...props.register("price")}>
+              <option value={100}>100</option>
+              <option value={500}>500</option>
+              <option value={2000}>2000</option>
+              <option value={5000}>5000</option>
+            </S.ReloadSelect>
+            <S.Button
+              type="button"
+              onClick={props.handleSubmit(props.onClickReload)}
+            >
+              충전하기
+            </S.Button>
+          </form>
         </S.ModalOpen>
       )}
     </S.Wrapper>

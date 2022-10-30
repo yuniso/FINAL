@@ -1,6 +1,7 @@
-import CommentListPage from "../../comment/list/commentList.container";
+import CommentPage from "../../comment/Comment.container";
 import KaKaoMap from "../write/kakaoMap";
 import * as S from "./ProductDetail.styles";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ProductDetailUI(props: any) {
   return (
@@ -43,7 +44,30 @@ export default function ProductDetailUI(props: any) {
       <S.Line3 />
       <S.ContentsWrapper>
         <S.Contents>{props.data?.fetchUseditem.contents}</S.Contents>
-        <KaKaoMap></KaKaoMap>
+        <S.ImagesWrapper>
+          <S.Image
+            src={
+              props.data?.fetchUseditem.images?.[0]
+                ? `http://storage.googleapis.com/${props.data.fetchUseditem.images?.[0]}`
+                : "/main/blankPage.png"
+            }
+          />
+          <S.Image
+            src={
+              props.data?.fetchUseditem.images?.[1]
+                ? `http://storage.googleapis.com/${props.data.fetchUseditem.images?.[1]}`
+                : "/main/blankPage.png"
+            }
+          />
+          <S.Image
+            src={
+              props.data?.fetchUseditem.images?.[2]
+                ? `http://storage.googleapis.com/${props.data.fetchUseditem.images?.[2]}`
+                : "/main/blankPage.png"
+            }
+          />
+        </S.ImagesWrapper>
+        <KaKaoMap />
         {/* prettier-ignore */}
         <pre style={{marginTop: "33px"}}>
         ● 상품별로 상품 특성 및 배송지에 따라 배송유형 및 소요기간이 달라집니다.<br/>
@@ -56,6 +80,28 @@ export default function ProductDetailUI(props: any) {
         ● 상품불량에 의한 반품,교환, A/S, 환불, 품질보증 및 피해보상 등에 관한 사항은 소비자분쟁해결기준(공정거래위원회 고시)에 따라 받으실 수 있습니다.
         </pre>
       </S.ContentsWrapper>
+
+      <S.CommentTitle>Q & A</S.CommentTitle>
+      <S.Line3 />
+      <S.CommentWrapper>
+        <S.CommentWrite
+          placeholder="내용을 입력해 주세요"
+          {...props.register("contents")}
+        />
+        <S.WriteButton onClick={props.handleSubmit(props.onClickCommentCreate)}>
+          작성하기
+        </S.WriteButton>
+        <S.CommentLine />
+        <S.CommentListWrapper></S.CommentListWrapper>
+        {props.Comment?.fetchUseditemQuestions.map((el: any) => (
+          <CommentPage
+            key={uuidv4()}
+            LoginUserId={props.LoginUser?._id}
+            el={el}
+            useditemId={props.useditemId}
+          />
+        ))}
+      </S.CommentWrapper>
     </S.Wrapper>
   );
 }

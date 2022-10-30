@@ -11,6 +11,7 @@ import { accessTokenState, isEditState } from "../../../../commons/store";
 import { useRecoilState } from "recoil";
 import { withAuth } from "../../../commons/hooks/withAuth";
 import { FETCH_USEDITEMS } from "../list/marketList.queries";
+import { Contents } from "../detail/ProductDetail.styles";
 
 const schema = yup.object({
   name: yup.string().required("상품명을 작성해주세요."),
@@ -88,12 +89,15 @@ function MarketWritePage(props: any) {
   };
 
   const onCompleteAddressSearch = (data: any) => {
-    setAddress(data.address);
-    setZipcode(data.zonecode);
+    setValue("useditemAddress.address", data.address);
+    trigger("useditemAddress.address");
+    setValue("useditemAddress.zipcode", data.zonecode);
+    trigger("useditemAddress.zipcode");
+
     setIsOpen(false);
   };
 
-  const onClickCreate = async (data: any) => {
+  const onClickWrite = async (data: any) => {
     await createUseditem({
       variables: {
         createUseditemInput: {
@@ -116,6 +120,7 @@ function MarketWritePage(props: any) {
         },
       ],
     });
+    console.log("등록");
     router.push("/market/");
   };
 
@@ -129,9 +134,10 @@ function MarketWritePage(props: any) {
           useditemId: router.query._id,
         },
       });
-      router.push(`/products/${result.data?.updateUseditem._id}`);
+      router.push(`/market/${result.data?.updateUseditem._id}`);
+      Modal.success({ content: "수정되었습니다." });
     } catch (error: any) {
-      alert(error.message);
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
 
@@ -151,10 +157,6 @@ function MarketWritePage(props: any) {
     setIsModalVisible(false);
   };
 
-  const onCompletePostcode = (data: any) => {
-    setIsModalVisible(false);
-  };
-
   return (
     <MarketWriteUI
       isEdit={props.isEdit}
@@ -167,10 +169,9 @@ function MarketWritePage(props: any) {
       onChangeContents={onChangeContents}
       fileRef={fileRef}
       onClickUpload={onClickUpload}
-      onClickCreate={onClickCreate}
+      onClickWrite={onClickWrite}
       onClickUpdate={onClickUpdate}
       onClickCancel={onClickCancel}
-      onComplete={onCompletePostcode}
       showModal={showModal}
       handleOk={handleOk}
       handleCancel={handleCancel}

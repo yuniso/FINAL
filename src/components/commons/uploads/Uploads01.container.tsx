@@ -23,7 +23,7 @@ export default function Uploads01(props: IUploads01Props) {
       props.onChangeFileUrls(result.data.uploadFile.url, props.index);
       console.log(result);
     } catch (error) {
-      Modal.error({ content: error.message });
+      if (error instanceof Error) Modal.error({ content: error.message });
     }
   };
 
