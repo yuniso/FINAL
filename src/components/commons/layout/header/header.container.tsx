@@ -23,7 +23,6 @@ export default function HeaderPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [user, setUser] = useState(false);
-  const [selected, setSelected] = useState("");
 
   const { data: LoginUser } = useQuery(FETCH_USER_LOGGED_IN);
   const [logoutUser] = useMutation(LOGOUT_USER);
@@ -64,9 +63,7 @@ export default function HeaderPage() {
 
   const onClickReload = (data: any) => {
     const IMP = window.IMP;
-
-    IMP.init("imp16816174");
-
+    IMP.init("imp49910675");
     IMP.request_pay(
       {
         pg: "nice",
@@ -86,7 +83,6 @@ export default function HeaderPage() {
             variables: { impUid: rsp.imp_uid },
           });
           setIsOpen(false);
-          setUser(true);
           router.push("/");
           Modal.success({ content: "결제되었습니다." });
         } else {
