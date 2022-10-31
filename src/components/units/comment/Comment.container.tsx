@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { MouseEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FETCH_USEDITEM_QUESTION } from "./Comment.queries";
@@ -7,6 +7,8 @@ import {
   DELETE_USEDITEM_QUESTION,
   UPDATE_USEDITEM_QUESTION,
 } from "./Comment.queries";
+import { FETCH_USER_LOGGED_IN } from "../user/login/login.queries";
+import { Modal } from "antd";
 
 export default function CommentPage(props: any) {
   const [isEdit, setIsEdit] = useState(false);
@@ -17,6 +19,7 @@ export default function CommentPage(props: any) {
 
   const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEM_QUESTION);
   const [updateUseditemQuestion] = useMutation(UPDATE_USEDITEM_QUESTION);
+  const { data } = useQuery(FETCH_USER_LOGGED_IN);
 
   useEffect(() => {
     if (props.el !== undefined) {
@@ -41,24 +44,28 @@ export default function CommentPage(props: any) {
           },
         ],
       });
-    } catch (error) {}
+    } catch (error) {
+      if (error instanceof Error) Modal.error({ content: error.message });
+    }
   };
 
   const onClickUpdate = async (data: any, event: any) => {
     try {
       await updateUseditemQuestion({
         variables: {
-          useditemQuestionId: event.target._id,
+          useditemQuestionId: event.target.id,
           updateUseditemQuestionInput: {
             contents: data.contents,
           },
         },
       });
       setIsEdit(false);
-    } catch (error) {}
+    } catch (error) {
+      if (error instanceof Error) Modal.error({ content: error.message });
+    }
   };
 
-  const onClickChange = () => {
+  const onClickEditChange = () => {
     setIsEdit(true);
   };
 
@@ -73,10 +80,11 @@ export default function CommentPage(props: any) {
       LoginUserId={props.LoginUserId}
       onClickDelete={onClickDelete}
       onClickUpdate={onClickUpdate}
-      onClickChange={onClickChange}
+      onClickEditChange={onClickEditChange}
       onClickUpdateCancel={onClickUpdateCancel}
       handleSubmit={handleSubmit}
       register={register}
+      data={data}
     />
   );
 }

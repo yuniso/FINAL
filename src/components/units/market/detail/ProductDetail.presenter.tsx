@@ -1,7 +1,8 @@
 import CommentPage from "../../comment/Comment.container";
 import KaKaoMap from "../write/kakaoMap";
 import * as S from "./ProductDetail.styles";
-import { v4 as uuidv4 } from "uuid";
+
+import InfiniteScroll from "react-infinite-scroller";
 
 export default function ProductDetailUI(props: any) {
   return (
@@ -93,14 +94,21 @@ export default function ProductDetailUI(props: any) {
         </S.WriteButton>
         <S.CommentLine />
         <S.CommentListWrapper></S.CommentListWrapper>
-        {props.Comment?.fetchUseditemQuestions.map((el: any) => (
-          <CommentPage
-            key={uuidv4()}
-            LoginUserId={props.LoginUser?._id}
-            el={el}
-            useditemId={props.useditemId}
-          />
-        ))}
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={props.onFetchMore}
+          hasMore={true}
+          useWindow={false}
+        >
+          {props.Comment?.fetchUseditemQuestions.map((el: any) => (
+            <CommentPage
+              key={el._id}
+              LoginUserId={props.LoginUser?._id}
+              el={el}
+              useditemId={props.useditemId}
+            />
+          ))}
+        </InfiniteScroll>
       </S.CommentWrapper>
     </S.Wrapper>
   );
