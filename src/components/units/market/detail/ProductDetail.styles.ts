@@ -160,10 +160,10 @@ export const WriteButton = styled.button`
   cursor: pointer;
 `;
 
+export const CommentListWrapper = styled.div``;
+
 export const CommentLine = styled.div`
   width: 1651px;
   border: 1px solid #c0c0c0;
-  margin-top: 18px;
+  margin-top: 40px;
 `;
-
-export const CommentListWrapper = styled.div``;

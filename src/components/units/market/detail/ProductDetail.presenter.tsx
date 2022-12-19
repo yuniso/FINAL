@@ -93,22 +93,23 @@ export default function ProductDetailUI(props: any) {
           작성하기
         </S.WriteButton>
         <S.CommentLine />
-        <S.CommentListWrapper></S.CommentListWrapper>
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={props.onFetchMore}
-          hasMore={true}
-          useWindow={false}
-        >
-          {props.Comment?.fetchUseditemQuestions.map((el: any) => (
-            <CommentPage
-              key={el._id}
-              LoginUserId={props.LoginUser?._id}
-              el={el}
-              useditemId={props.useditemId}
-            />
-          ))}
-        </InfiniteScroll>
+        <S.CommentListWrapper>
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={props.onFetchMore}
+            hasMore={true}
+            useWindow={false}
+          >
+            {props.Comment?.fetchUseditemQuestions.map((el: any) => (
+              <CommentPage
+                key={el._id}
+                LoginUserId={props.LoginUser?._id}
+                el={el}
+                useditemId={props.useditemId}
+              />
+            ))}
+          </InfiniteScroll>
+        </S.CommentListWrapper>
       </S.CommentWrapper>
     </S.Wrapper>
   );
