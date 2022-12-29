@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import * as S from "./navigation.styles";
 
 const menus = [

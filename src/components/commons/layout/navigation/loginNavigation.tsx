@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import * as S from "./navigation.styles";
 
 const menus = [
-  { logo: "DINGCO", page: "/" },
+  { logo: "DINGCO", page: "/market" },
   { name: "BRAND", page: "/market" },
   { name: "CATEGORY", page: "/market" },
   { name: "LIFE", page: "/market" },
@@ -11,7 +11,7 @@ const menus = [
   { name: "#STYLE", page: "/market" },
   { name: "EVENT", page: "/market" },
   { name: "BEST", page: "/market" },
-  { name2: "회원가입", page: "/join" },
+  { name2: "회원가입", page: "/market" },
   { name2: "장바구니", page: "/market" },
 ];
 
