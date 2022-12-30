@@ -8,9 +8,9 @@ export const Wrapper = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 181px;
+  width: 183px;
   height: 49px;
-  background: url("/header/dingco-logo1.png");
+  background: url("/navigation/Simple_Logo.png");
   margin-top: 26px;
   margin-left: 76px;
   cursor: pointer;

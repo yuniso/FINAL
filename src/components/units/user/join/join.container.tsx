@@ -65,7 +65,7 @@ export default function JoinPage() {
   };
 
   const onClickCancel = () => {
-    router.push("/");
+    router.push("/login");
   };
   return (
     <JoinUI

@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { defineArguments } from "graphql/type/definition";
 import { useRouter } from "next/router";
 import { MouseEvent } from "react";
 import { withAuth } from "../../../commons/hooks/withAuth";
@@ -8,7 +9,7 @@ import {
   FETCH_USEDITEMS_OF_THE_BEST,
 } from "./marketList.queries";
 
-function MarketListPage() {
+export default function MarketListPage() {
   const router = useRouter();
 
   const { data: bestItems } = useQuery(FETCH_USEDITEMS_OF_THE_BEST);
@@ -56,4 +57,4 @@ function MarketListPage() {
   );
 }
 
-export default withAuth(MarketListPage);
+// export default withAuth(MarketListPage);

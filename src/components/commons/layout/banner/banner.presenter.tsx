@@ -17,7 +17,7 @@ export default function BannerUI() {
     <Wrapper>
       <Slider {...settings}>
         <div>
-          <SliderItem src="/banner/carousel1.jpg" />
+          <SliderItem src="/banner/notice2.jpg" />
         </div>
         <div>
           <SliderItem src="/banner/carousel2.jpg" />

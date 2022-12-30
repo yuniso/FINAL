@@ -142,7 +142,7 @@ function MarketWritePage(props: any) {
   };
 
   const onClickCancel = () => {
-    router.push("/");
+    router.push("/market");
   };
 
   const showModal = () => {

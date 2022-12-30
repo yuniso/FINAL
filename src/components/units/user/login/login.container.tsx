@@ -64,7 +64,7 @@ export default function LoginPage() {
       localStorage.setItem("accessToken", accessToken as string);
       localStorage.setItem("userInfo", JSON.stringify(getUserInfo));
       setLoginStatus(true);
-      router.push("/");
+      router.push("/market");
       Modal.success({ content: "로그인에 성공하였습니다." });
       console.log(result);
     } catch (error) {

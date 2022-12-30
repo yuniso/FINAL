@@ -5,6 +5,7 @@ import FooterPage from "./footer/footer.container";
 import HeaderPage from "./header/header.container";
 import JoinNavigation from "./navigation/joinNavigation";
 import LoginNavigation from "./navigation/loginNavigation";
+import Navigation from "./navigation/navigation";
 import NavigationPage from "./navigation/navigation.container";
 
 const Body = styled.div``;
@@ -15,9 +16,8 @@ const HIDDEN_BANNERS = [
   "/market/[_id]",
   "/market/write",
   "/market/[_id]/edit",
-  "/",
 ];
-const HIDDEN_NAVIGATION = ["/login", "/"];
+const HIDDEN_NAVIGATION = ["/login"];
 const HIDDEN_FOOTER = ["/"];
 
 export default function Layout(props: any) {
@@ -30,8 +30,9 @@ export default function Layout(props: any) {
   return (
     <>
       {!isHiddenHeader && <HeaderPage />}
-      {<NavigationPage />}
-      {/* <LoginNavigation />} */}
+      {!isHiddenNavigation && <NavigationPage />}
+      {/* {<Navigation /> }
+      <LoginNavigation />} */}
       {!isHiddenBanner && <BannerPage />}
       <Body>{props.children}</Body>
       {!isHiddenFooter && <FooterPage />}

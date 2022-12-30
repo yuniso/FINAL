@@ -54,7 +54,7 @@ export default function HeaderPage() {
       setLoginStatus(false);
 
       deleteCookie("refreshToken");
-      router.push("/");
+      router.push("/market");
       Modal.success({ content: "로그아웃 되었습니다." });
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
@@ -83,7 +83,7 @@ export default function HeaderPage() {
             variables: { impUid: rsp.imp_uid },
           });
           setIsOpen(false);
-          router.push("/");
+          router.push("/market");
           Modal.success({ content: "결제되었습니다." });
         } else {
           Modal.error({ content: "다시 시도해주세요." });
@@ -105,7 +105,7 @@ export default function HeaderPage() {
   };
 
   const onClickLogo = () => {
-    router.push("/");
+    router.push("/market");
   };
 
   const onClickLogin = () => {

@@ -15,7 +15,7 @@ import {
   FETCH_USEDITEM_QUESTION,
 } from "../../comment/Comment.queries";
 
-function ProductDetailPage() {
+export default function ProductDetailPage() {
   const router = useRouter();
 
   const [pickCount, setPickCount] = useState(0);
@@ -99,4 +99,4 @@ function ProductDetailPage() {
   );
 }
 
-export default withAuth(ProductDetailPage);
+// export default withAuth(ProductDetailPage);
